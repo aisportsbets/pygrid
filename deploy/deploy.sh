@@ -35,7 +35,7 @@ sudo apt-get install libevent-dev -y
 sudo apt-get install gcc -y
 
 echo 'Cloning PyGrid'
-git clone https://github.com/OpenMined/PyGrid
+git clone https://github.com/aisportsbets/pygrid
 
 
 while IFS=, read -r id port
@@ -50,7 +50,7 @@ do
 
     elif [[ "$id" == *"node"* ]]; then
         echo "Running $id"
-        cd /PyGrid/apps/node
+        cd /PyGrid/apps/domain
         poetry install
         ./run.sh --id $id --port $port --start_local_db
 
