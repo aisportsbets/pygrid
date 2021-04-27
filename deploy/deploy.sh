@@ -2,8 +2,9 @@
 
 ## For debugging
 # redirect stdout/stderr to a file
-exec &> log.out
+exec &> /home/ubuntu/log.out
 
+sudo su
 
 echo 'Simple Web Server for testing the deployment'
 sudo apt update -y
@@ -44,19 +45,19 @@ do
 
     if [[ "$id" == *"network"* ]]; then
         echo "Running $id"
-        cd /PyGrid/apps/network
+        cd /pygrid/apps/network
         poetry install
         nohup ./run.sh --port $port --start_local_db
 
     elif [[ "$id" == *"node"* ]]; then
         echo "Running $id"
-        cd /PyGrid/apps/domain
-        poetry install
-        ./run.sh --id $id --port $port --start_local_db
+        cd /pygrid/apps/domain
+        poetry install 
+        ./run.sh --port $port --start_local_db
 
     elif [[ "$id" == *"worker"* ]]; then
         echo "Starting Worker"
-        cd /PyGrid/apps/worker
+        cd /pygrid/apps/worker
         poetry install
     else
         echo "Only Network, Nodes, & Workers"
